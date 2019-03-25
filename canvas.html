@@ -2,73 +2,29 @@
 <html>
 <head>
     <title>Meu teste de Canvas</title>
-    <script type="text/javascript">
-
-    function windowToCanvas(canvas, x, y) {
-       var bbox = canvas.getBoundingClientRect();
-
-       return { x: x - bbox.left * (canvas.width  / bbox.width),
-                y: y - bbox.top  * (canvas.height / bbox.height)
-              };
-    }
-
-    function init(){
-        var canvas = document.getElementById('tutorial');
-
-        canvas.onmousemove = function (e) {
-           var loc = windowToCanvas(canvas, e.clientX, e.clientY);
-
-           var ctx = canvas.getContext('2d');
-
-           ctx.arc(loc.x, loc.y, 4, 0, Math.PI * 2, true); // Círculo exterior
-
-           var div = document.getElementById('coords');
-           div.innerHTML= loc.x + " " + loc.y;
+    <script type="text/javascript" src="colors.js"></script>
+    <script type="text/javascript" src="noventagraus.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    
 
 
-        };
-
-        canvas.onclick = function(e) {
-           var loc = windowToCanvas(canvas, e.clientX, e.clientY);
-           var ctx = canvas.getContext('2d');
-           ctx.fillStyle = "rgb(128,0,0)";
-           ctx.arc(loc.x, loc.y, 6, 0, Math.PI * 2, true); // Círculo exterior
-           ctx.fill();
-
-        };
-
-        setInterval(draw, 10);
-    }
-
-    function draw(){
-        var canvas = document.getElementById('tutorial');
-
-        if (canvas.getContext){
-            var ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "rgb(255,255,255)";
-            ctx.fill();
-
-            ctx.fillStyle = "rgb(200,0,0)";
-            ctx.fillRect (10, 10, 55, 50);
-
-            ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-            ctx.fillRect (30, 30, 55, 50);
-
-            ctx.arc(75, 75, 4, 0, Math.PI * 2, true); // Círculo exterior
-            ctx.fillStyle = "rgba(0, 0, 0, 1.0)";
-            ctx.fill();
-        }
-    }
-
-    </script>
     <style type="text/css">
-      canvas { border: 1px solid black; }
+        canvas { border: 1px solid black; }
+
+        #title {font-size: 20px;}
+
+        .logs{
+            display: none;
+        }
     </style>
 </head>
 <body onload="init();">
+<div id="title">Encontre o lugar geométrico dos pontos equidistantes a A e B.</div>
 <canvas id="tutorial" width="450" height="450"></canvas>
-<div id="coords"></div>
+<div id="coords" class="logs"></div>
+<div id="message" class="logs"></div>
+<button value="Resposta" onclick="drawAll();">Resposta</button>
+<button value="Remover" onclick="removeLast();">Remover</button>
 </body>
 </html>
 
