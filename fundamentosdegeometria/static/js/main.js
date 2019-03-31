@@ -23,6 +23,9 @@
         ctx.stroke();
         ctx.closePath();
 
+        ctx.font = "15px Arial";
+        ctx.fillText("P", loc.x-10, loc.y+20);
+
         ctx.beginPath();
         ctx.arc(loc.x, loc.y, 4, 0, Math.PI * 2, true); // Círculo exterior
         ctx.closePath();
@@ -39,6 +42,7 @@
     function init(){
 
         document.getElementById('title').innerHTML = Title();
+        document.getElementById('latex').innerHTML = Latex();
         
         canvas = document.getElementById('tutorial');
         width = canvas.width;
@@ -138,6 +142,10 @@
 
     function writeMessage(message) {
         document.getElementById('message').innerHTML= message;
+    }
+
+    function writeValue(value){
+        document.getElementById('value').innerHTML= value;
     }
 
     function drawAll(){

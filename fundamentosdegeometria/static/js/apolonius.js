@@ -15,8 +15,23 @@ function Condition(x, y){
     d = dist(o, p);
     writeMessage((d-r) + " Raio = " + r, + " Razao = " + (d1/d2));
 
-    return Math.abs(r - d) < 2;
+    var razao = d1/d2;
+
+    c = Math.abs(r - d) < 2
+
+    if(c){
+        writeValue("2.00");
+    } else{
+        writeValue(parseFloat(razao.toFixed(2 || 10)));
+    }
+
+
+    return c;
     //return propTest;
+}
+
+function Latex(){
+    return "$$ \\frac{PA}{PB} = $$";
 }
 
 function CorrectPos(loc){
@@ -42,5 +57,5 @@ function AddInitObjects(){
 
 
 function Title(){
-    return "Encontre os pontos P tais que PA/PB = 2"
+    return "Encontre o lugar geométrico dos pontos P tais que PA/PB = 2"
 }

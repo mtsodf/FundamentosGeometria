@@ -2,9 +2,16 @@
 <html>
 <head>
     <title>Meu teste de Canvas</title>
-    <script type="text/javascript" src="/www/js/colors.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/bootstrap-4.3.1/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="/static/js/colors.js"></script>
     <script type="text/javascript" src="{{ javascript_file }}"></script>
-    <script type="text/javascript" src="/www/js/main.js"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
     
 
 
@@ -19,6 +26,11 @@
     </style>
 </head>
 <body onload="init();">
+
+<div>
+
+</div>
+
 <div id="title">Encontre o lugar geométrico dos pontos equidistantes a A e B.</div>
 <canvas id="tutorial" width="450" height="450"></canvas>
 <div id="coords" class="logs"></div>

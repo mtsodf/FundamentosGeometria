@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- CSS Base + Colors -->
+    <link rel="stylesheet" type="text/css" media="all" href="/static/webslides/static/css/webslides.css">
+    
+    <!-- Optional - CSS SVG Icons (Font Awesome) -->
+    <link rel="stylesheet" type="text/css" media="all" href="/static/webslides/static/css/svg-icons.css">
+
+    <script type="text/javascript" src="/static/js/colors.js"></script>
+    <script type="text/javascript" src="{{ javascript_file }}"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+    <style type="text/css">
+        canvas { border: 1px solid black; }
+
+
+
+        .logs{
+            display: none;
+        }
+
+        .tabledisplay{
+            width: fit-content;
+            align-content: center;
+            margin: auto;
+        }
+
+        .maxwidth{
+            max-width: 1500px;
+        }
+
+
+    </style>
+
+</head>
+<body onload="init();">
+
+<article id="webslides">
+
+    <section class="aligncenter maxwidth">
+        <h1 id="title">Encontre o lugar geométrico dos pontos equidistantes a A e B.</h1>
+        <div class="wrap">
+
+            <div class="grid vertical-align">
+                <div class="column" id="canvasdiv"> 
+                    <div>
+                        <canvas id="tutorial" width="500px" height="500px"></canvas>
+                    </div>
+                    <div>
+                        <button value="Desfazer" onclick="removeLast();">Desfazer</button>
+                    </div>
+        
+                </div>
+
+                <div class="column"> 
+                    
+                    <table class="tabledisplay">
+                      <tr>
+                        <th id="latex"> </th>
+                        <th id="value"></th> 
+                      </tr>
+                    </table>
+
+                </div>
+
+            </div>
+            
+        </div>
+
+        <div id="coords" class="logs"></div>
+        <div id="message" class="logs"></div>
+        <div>
+            <button value="Resposta" onclick="drawAll();" style=" display: none">Resposta</button>
+            </div>
+    </section>
+
+</article>
+
+<!-- Required -->
+<script src="/static/webslides/static/js/webslides.js"></script>
+<script>
+  window.ws = new WebSlides();
+</script>
+
+
+</body>
+</html>
+

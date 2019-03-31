@@ -35,35 +35,30 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class MainPage(webapp2.RequestHandler):
 
     def get(self):
-        # guestbook_name = self.request.get('guestbook_name',
-        #                                   DEFAULT_GUESTBOOK_NAME)
-        # greetings_query = Greeting.query(
-        #     ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
-        # greetings = greetings_query.fetch(10)
 
-        # user = users.get_current_user()
-        # if user:
-        #     url = users.create_logout_url(self.request.uri)
-        #     url_linktext = 'Logout'
-        # else:
-        #     url = users.create_login_url(self.request.uri)
-        #     url_linktext = 'Login'
-
-        # template_values = {
-        #     'user': user,
-        #     'greetings': greetings,
-        #     'guestbook_name': urllib.quote_plus(guestbook_name),
-        #     'url': url,
-        #     'url_linktext': url_linktext,
-        # }
-        template_values = {'javascript_file': "/www/js/apolonius.js"}
+        template_values = {'javascript_file': "/static/js/apolonius.js"}
         template = JINJA_ENVIRONMENT.get_template('templates/canvas.html')
         self.response.write(template.render(template_values))
 # [END main_page]
 
+class SlidePage(webapp2.RequestHandler):
+    """docstring for SlidePage"""
+    def get(self):
+        caso = self.request.get('caso', "index")
+        if caso == "index":
+            template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+            self.response.write(template.render({}))
+
+        else:
+            template = JINJA_ENVIRONMENT.get_template('templates/slides.html')
+            template_values = {'javascript_file': "/static/js/%s.js"%caso}
+            self.response.write(template.render(template_values))
+
+
 
 # [START app]
 app = webapp2.WSGIApplication([
-    ('/', MainPage)
+    ('/', MainPage),
+    ('/slide', SlidePage),
 ], debug=True)
 # [END app]
